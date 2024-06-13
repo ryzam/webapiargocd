@@ -8,7 +8,18 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x' # Adjust the .NET version as necessary
+
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build project
+      run: dotnet build --configuration Release
+      
     - name: Print message
       run: echo "Hello, this is a simple GitHub Action!"

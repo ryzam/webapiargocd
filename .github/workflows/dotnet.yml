@@ -1,0 +1,25 @@
+name: Simple Console Output
+
+on: [push]
+
+jobs:
+  print-message:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x' # Adjust the .NET version as necessary
+
+    - name: Restore dependencies
+      run: dotnet restore src/src.sln
+      
+    - name: Build project
+      run: dotnet build src/src.sln --configuration Release
+      
+    - name: Print message
+      run: echo "Hello, this is a simple GitHub Action!"

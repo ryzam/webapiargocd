@@ -44,8 +44,8 @@ jobs:
     - name: Update Kubernetes manifests
       run: |
         sed -i 's|image: .*$|image: ${{ secrets.DOCKER_USERNAME }}/webapiargocd:latest|' k8s/deployment.yaml
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "irwanazam"
+        git config --global user.email "irwan.azam@cloud-connect.asia"
         git add k8s/deployment.yaml
         git commit -m "Update image to ${{ secrets.DOCKER_USERNAME }}/webapiargocd:latest"
         git push origin main
